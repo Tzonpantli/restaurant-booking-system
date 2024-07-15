@@ -1,0 +1,211 @@
+{
+	"info": {
+		"_postman_id": "5ca5df2d-a2dd-411f-ab04-4746f6c5c860",
+		"name": "Booking Test Cases",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20893180"
+	},
+	"item": [
+		{
+			"name": "Request a Booking",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerName\": \"Nestor David\",\r\n  \"tableSize\": 4,\r\n  \"date\": \"2024-07-12\",\r\n  \"time\": \"20:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/bookings/request-a-booking",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bookings",
+						"request-a-booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request a Booking outside the operating hours",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerName\": \"Nestor David\",\r\n  \"tableSize\": 4,\r\n  \"date\": \"2024-07-12\",\r\n  \"time\": \"24:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/bookings/request-a-booking",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bookings",
+						"request-a-booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid Request Body",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"customerName\": \"Nestor David\",\r\n  \"tableSize\": 4,\r\n  \"date\": \"2024-07-1\",\r\n  \"time\": \"24:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/bookings/request-a-booking",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bookings",
+						"request-a-booking"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check bookings per Date",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/bookings/all-bookings-at-date?date=2024-07-12",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bookings",
+						"all-bookings-at-date"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2024-07-12"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Missing Date",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/bookings/all-bookings-at-date?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bookings",
+						"all-bookings-at-date"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalid Date Copy",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/bookings/all-bookings-at-date?date=2024-07-1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"bookings",
+						"all-bookings-at-date"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2024-07-1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
